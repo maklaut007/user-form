@@ -7,8 +7,8 @@ function Form() {
       <input type="text" name="name" />
       <input type="email" name="email" />
       <input type="password" name="password" />
-      <SelectBox />
-      <SelectBox />
+      <SelectBox options={["1", "2"]} />
+      <SelectBox options={["3", "4"]} />
     </form>
   );
 }
