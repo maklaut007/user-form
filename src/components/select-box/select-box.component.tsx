@@ -6,12 +6,15 @@ interface Props {
 
 function SelectBox({ options }: Props) {
   const [currentOption, setCurrentOption] = useState<string>("");
-
   const changeOption = (option: string) => {
     setCurrentOption(option);
   };
 
-  const optionsList = options.map((opt) => <option value={opt}>{opt}</option>);
+  const optionsList = options.map((opt) => (
+    <option key={opt} value={opt}>
+      {opt}
+    </option>
+  ));
 
   return (
     <select
