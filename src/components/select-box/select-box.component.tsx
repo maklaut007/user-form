@@ -2,11 +2,13 @@ import React, { useState } from "react";
 
 interface Props {
   options: string[];
+  onChange: (value: string) => void;
 }
 
-function SelectBox({ options }: Props) {
+function SelectBox({ options, onChange }: Props) {
   const [currentOption, setCurrentOption] = useState<string>("");
   const changeOption = (option: string) => {
+    onChange(option);
     setCurrentOption(option);
   };
 

@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import useGetRequest from "../../hooks/useGetRequest";
 import FormInput from "../form-input/form-input.component";
@@ -8,6 +9,10 @@ function Form() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [state, setState] = useState("Illinois");
+  const [occupation, setOccupation] = useState("Head of Shrubbery");
+
+  const [responseData, setResponseData] = useState<any>(null);
 
   const nameHandler = (value: string) => {
     setName(value);
@@ -18,13 +23,41 @@ function Form() {
   const passwordHandler = (value: string) => {
     setPassword(value);
   };
+  const stateHandler = (value: string) => {
+    setState(value);
+  };
+  const occupationHandler = (value: string) => {
+    setOccupation(value);
+  };
 
   const [optionsData] = useGetRequest(
     "https://frontend-take-home.fetchrewards.com/form"
   );
 
+  const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    console.log(name, email, password, occupation, state);
+    event.preventDefault();
+
+    axios
+      .post("https://frontend-take-home.fetchrewards.com/form", {
+        name,
+        email,
+        password,
+        occupation,
+        state,
+      })
+      .then((response) => {
+        alert("Submit Success");
+        console.log(response);
+        setResponseData(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
-    <form>
+    <form onSubmit={onSubmitHandler}>
       <FormInput
         type="text"
         value={name}
@@ -46,8 +79,14 @@ function Form() {
         placeholder="password"
         isRequred={true}
       />
-      <SelectBox options={optionsData?.occupations || []} />
-      <SelectBox options={optionsData?.states.map((st) => st.name) || []} />
+      <SelectBox
+        onChange={occupationHandler}
+        options={optionsData?.occupations || []}
+      />
+      <SelectBox
+        onChange={stateHandler}
+        options={optionsData?.states.map((st) => st.name) || []}
+      />
       <FormSubmit />
     </form>
   );
