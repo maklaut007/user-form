@@ -1,0 +1,32 @@
+.select {
+  display: grid;
+  width: 100%;
+  margin: 4px 0;
+  padding: 0.3em 0.7em;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 0.3em 0 0 0.3em;
+  cursor: pointer;
+  transition: background-color 0.5s ease-out, color 0.2s ease-in;
+  line-height: 1.1;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
+.select:hover {
+  outline: none;
+  border: none;
+}
+.select:focus {
+  outline: none;
+  border-radius: 0.3em 0 0 0;
+}
+.select::after {
+  content: "";
+  width: 0.8em;
+  height: 0.5em;
+  background-color: var(--select-arrow);
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+.option {
+  font-size: 0.9em;
+}

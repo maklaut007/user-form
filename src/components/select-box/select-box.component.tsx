@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./style.css";
 
 interface Props {
   options: string[];
@@ -13,13 +14,14 @@ function SelectBox({ options, onChange }: Props) {
   };
 
   const optionsList = options.map((opt) => (
-    <option key={opt} value={opt}>
+    <option key={opt} value={opt} className="option">
       {opt}
     </option>
   ));
 
   return (
     <select
+      className="select"
       value={currentOption}
       onChange={(event) => changeOption(event.target.value)}
     >

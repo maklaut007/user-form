@@ -4,6 +4,7 @@ import useGetRequest from "../../hooks/useGetRequest";
 import FormInput from "../form-input/form-input.component";
 import FormSubmit from "../form-submit/form-submit.component";
 import SelectBox from "../select-box/select-box.component";
+import "./style.css";
 
 function Form() {
   const [name, setName] = useState("");
@@ -57,32 +58,43 @@ function Form() {
   };
 
   return (
-    <form onSubmit={onSubmitHandler}>
+    <form onSubmit={onSubmitHandler} className="form">
+      <label htmlFor="name" className="label">
+        Name:
+      </label>
       <FormInput
+        id="name"
         type="text"
         value={name}
         onInput={nameHandler}
-        placeholder="name"
         isRequred={true}
       />
+      <label htmlFor="email" className="label">
+        Email:
+      </label>
       <FormInput
+        id="email"
         type="email"
         value={email}
         onInput={emailHandler}
-        placeholder="email"
         isRequred={true}
       />
+      <label htmlFor="password" className="label">
+        Password:
+      </label>
       <FormInput
+        id="password"
         type="password"
         value={password}
         onInput={passwordHandler}
-        placeholder="password"
         isRequred={true}
       />
+      <label className="label">Occupation:</label>
       <SelectBox
         onChange={occupationHandler}
         options={optionsData?.occupations || []}
       />
+      <label className="label">State:</label>
       <SelectBox
         onChange={stateHandler}
         options={optionsData?.states.map((st) => st.name) || []}
