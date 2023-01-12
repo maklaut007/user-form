@@ -1,3 +1,11 @@
+## Download
+
+### `git clone https://github.com/maklaut007/user-form.git`
+
+## Istall dependencies
+
+### `npm install`
+
 ## Available Scripts
 
 ### `npm start`
@@ -7,8 +15,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Builds the app for production to the `build` folder.
